@@ -12,10 +12,43 @@ module.exports = {
     async create(request, response, next){
 
         try{
+            const { 
+                username,
+                nome,
+                sobrenome,
+                cpf,
+                cnpj,
+                rg,
+                celular,
+                rua,
+                numero,
+                bairro,
+                cidade,
+                estado,
+                cep,
+                token_login,
+                senha 
+            } = request.body
 
-            await knex('users').insert(request.body)
+            await knex('users').insert({
+                username,
+                nome,
+                sobrenome,
+                cpf,
+                cnpj,
+                rg,
+                celular,
+                rua,
+                numero,
+                bairro,
+                cidade,
+                estado,
+                cep,
+                token_login,
+                senha: senha
+            })
 
-            return response.json({sucess: true})
+            return response.status(201).send()
 
         }catch(error){
 
