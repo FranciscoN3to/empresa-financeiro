@@ -12,7 +12,7 @@ const UserController = require('./controllers/UserController')
  *  Body: Params: request.body (Dados para criação ou alteração de um registro) POST / PUT 
 */
 
-routes.get('/users', UserController.index)
+routes.get('/users', UserController.request)
 routes.post('/users', UserController.create)
 routes.put('/users/:id', UserController.update)
 routes.delete('/users/:id', UserController.delete)
