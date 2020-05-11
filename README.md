@@ -16,16 +16,6 @@ Uso da lib [knex.js](http://knexjs.org)
     - cargo
     - created_at
     - updated_at
-- create_table_produtos_servicos
-    - id
-    - nome
-    - tipo (produto / servico)
-    - marca
-    - valor
-    - quantidade
-    - descricao
-    - created_at
-    - updated_at
 - create_table_colaboradores
     - id
     - nome
@@ -41,6 +31,16 @@ Uso da lib [knex.js](http://knexjs.org)
     - endereco_cidade
     - endereco_estado
     - endereco_cep
+    - created_at
+    - updated_at
+- create_table_produtos_servicos
+    - id
+    - nome
+    - tipo (produto / servico)
+    - marca
+    - valor
+    - quantidade
+    - descricao
     - created_at
     - updated_at
 - create_table_material_estoque
