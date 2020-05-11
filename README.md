@@ -55,6 +55,7 @@ Uso da lib [knex.js](http://knexjs.org)
     - id
     - id_materia
     - valor
+    - quantidade
     - data_compra
     - descricao
     - created_at
