@@ -6,7 +6,6 @@ exports.up = knex => knex.schema.createTable('material_estoque', (table) => {
     table.string('nome').notNullable().unique().comment('nome do material')
     table.string('marca').comment('marca do material')
     table.integer('quantidade').defaultTo(0).comment('quantidade do material')
-    table.text('descricao').comment('descricao do material')
     table.timestamp('created_at').defaultTo(knex.fn.now())
     table.timestamp('updated_at').defaultTo(knex.fn.now())
 
