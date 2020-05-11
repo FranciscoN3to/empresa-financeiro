@@ -1,12 +1,11 @@
 
 const knex = require('../database')
-const CryptoJS = require("crypto-js")
-
+ 
 module.exports = {
 
     async request(request, response){ 
         
-        const results = await knex('produtoServico')
+        const results = await knex('produtos_servicos')
 
         return response.json(results)
     
@@ -15,40 +14,17 @@ module.exports = {
 
         try{
             const { 
-                username,
-                email,
                 nome,
-                sobrenome,
-                cpf,
-                cnpj,
-                rg,
-                celular,
-                rua,
-                numero,
-                bairro,
-                cidade,
-                estado,
-                cep,
-                senha 
+                valor,
+                tipo,
+                quantidade
             } = request.body
             
-            await knex('produtoServico').insert({
-                username,
-                email,
+            await knex('produtos_servicos').insert({
                 nome,
-                sobrenome,
-                cpf: cpf.replace(/[^\w\s]/gi, ''),
-                cnpj: cnpj.replace(/[^\w\s]/gi, ''),
-                rg,
-                celular: celular.replace(/[^\w\s]/gi, ''),
-                rua,
-                numero,
-                bairro,
-                cidade,
-                estado,
-                cep: cep.replace(/[^\w\s]/gi, ''),
-                token_login: CryptoJS.MD5(cpf).toString(),
-                senha: CryptoJS.MD5(senha).toString()
+                valor,
+                tipo,
+                quantidade
             })
 
             return response.status(201).send()
@@ -67,36 +43,17 @@ module.exports = {
             const { id } = request.params
  
             const { 
-                username,
                 nome,
-                sobrenome,
-                cpf,
-                cnpj,
-                rg,
-                celular,
-                rua,
-                numero,
-                bairro,
-                cidade,
-                estado,
-                cep,
-     
+                valor,
+                tipo,
+                quantidade
             } = request.body
 
-            await knex('produtoServico').update({
-                username,
+            await knex('produtos_servicos').update({
                 nome,
-                sobrenome,
-                cpf: cpf.replace(/[^A-Z0-9]+/gi, ''), // /[^\w\s]/gi
-                cnpj: cnpj.replace(/[^A-Z0-9]+/gi, ''),
-                rg,
-                celular: celular.replace(/[^A-Z0-9]+/gi, ''),
-                rua,
-                numero,
-                bairro,
-                cidade,
-                estado,
-                cep: cep.replace(/[^A-Z0-9]+/gi, '')
+                valor,
+                tipo,
+                quantidade
             }).where({ id })
  
             return response.status(204).send()
@@ -114,7 +71,7 @@ module.exports = {
 
             const { id } = request.params
 
-            await knex('produtoServico')
+            await knex('produtos_servicos')
             .where({ id })
             .del()
  
