@@ -47,7 +47,6 @@ Uso da lib [knex.js](http://knexjs.org)
 - create_table_material_estoque
     - id
     - nome
-    - valor
     - marca
     - quantidade
     - created_at
@@ -55,7 +54,9 @@ Uso da lib [knex.js](http://knexjs.org)
 - create_table_compras (Banco dependente do banco "materia_estoque")
     - id
     - id_materia
+    - valor
     - data_compra
+    - descricao
     - created_at
     - updated_at
 - create_table_promocoes
