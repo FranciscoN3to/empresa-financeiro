@@ -65,6 +65,7 @@ Uso da lib [knex.js](http://knexjs.org)
     - id_produto (id do produto ou serviço)
     - valor
     - dia_promocao (dias da semana)
+    - descricao
     - created_at
     - updated_at
 - create_table_vendas
