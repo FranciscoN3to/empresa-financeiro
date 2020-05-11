@@ -98,6 +98,7 @@ Uso da lib [knex.js](http://knexjs.org)
     - created_at
     - updated_at
 - create_table_notificacoes_clientes
+    - id
     - nome 
     - repetir (true ou false)
     - repeticoes (numero de repetições caso coluna "repetir": true)
