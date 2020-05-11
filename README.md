@@ -71,11 +71,12 @@ Uso da lib [knex.js](http://knexjs.org)
     - id
     - id_produto (id do produto ou servico)
     - id_cliente (id do cliente relacionado a venda)
-    - id_funcionario (id do funcionario relacionado a venda)
+    - id_colaborador (id do colaborador relacionado a venda)
     - valor (valor inteiro da venda)
     - tipo_pagamento (parcelado ou a vista)
     - numero_parcelas
-    - obs (observação feita pelo funcionario no momento da venda)
+    - tipo (produto, serviço)
+    - descricao (observação feita pelo colaborador no momento da venda)
     - created_at
     - updated_at
 - create_table_pagamentos (Banco dependente do banco "vendas")
