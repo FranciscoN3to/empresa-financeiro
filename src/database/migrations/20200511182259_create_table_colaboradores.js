@@ -1,6 +1,6 @@
 
 
-exports.up = knex => knex.schema.createTable('users', (table) => {
+exports.up = knex => knex.schema.createTable('colaboradores', (table) => {
 
     table.increments('id').notNullable().unique().comment('Id do usuario')
     table.string('nome').notNullable()
@@ -23,6 +23,6 @@ exports.up = knex => knex.schema.createTable('users', (table) => {
 })
 
 
-exports.down = knex => knex.schema.dropTable('users')
+exports.down = knex => knex.schema.dropTable('colaboradores')
 
 
