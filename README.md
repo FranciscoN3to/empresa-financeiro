@@ -25,6 +25,7 @@ Uso da lib [knex.js](http://knexjs.org)
     - data_nascimento
     - cpf
     - cnpj
+    - rg
     - endereco_rua
     - endereco_numero
     - endereco_bairro
