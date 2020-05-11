@@ -1,6 +1,6 @@
 
 
-exports.up = knex => knex.schema.createTable('produtoServico', (table) => {
+exports.up = knex => knex.schema.createTable('produtos_servicos', (table) => {
 
     table.increments('id').notNullable().unique().comment('Id do produto ou servico')
     table.string('nome').notNullable().unique().comment('nome do produto ou servico')
@@ -13,4 +13,4 @@ exports.up = knex => knex.schema.createTable('produtoServico', (table) => {
 })
 
 
-exports.down = knex => knex.schema.dropTable('produtoServico')
+exports.down = knex => knex.schema.dropTable('produtos_servicos')
