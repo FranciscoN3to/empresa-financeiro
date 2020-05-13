@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const knex = require('../database')
+const knex = require('../../database')
 const jwt = require('jsonwebtoken')
 const CryptoJS = require("crypto-js")
 
@@ -15,7 +15,7 @@ module.exports = {
                         .orWhere({email: username, password: CryptoJS.MD5(password).toString()})
                         .select('id', 'username', 'email', 'token_login', 'foto', 'cargo')
 
-        if(user.length === 0){ return next({message: 'Login ou senha incorreta'}) }
+        if(user.length === 0){ return next({message: 'Login ou senha incorreta', status: 401}) }
        
         const payLoad = {name: user[0].username, sub: user[0].token_login}
 

@@ -4,7 +4,8 @@
   "main": "src/server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "devStartAuth": "nodemon src/auth/authServer.js"
   },
   "dependencies": {
     "crypto-js": "^4.0.0",

@@ -1,11 +1,10 @@
 const express = require('express')
 const routes = express.Router()
 
-const LoginLogoutController = require('./controllers/LoginLogoutController')
 const UserController = require('./controllers/UserController')
 const ProdutoServicoController = require('./controllers/ProdutoServicoController')
 
-const authenticateToken = require('./controllers/authenticateTokenController')
+const authenticateToken = require('./auth/controllers/authenticateTokenController')
 
 /** CRUD 
  * Métodos HTTP: GET, POST, PUT, DELETE
@@ -17,9 +16,6 @@ const authenticateToken = require('./controllers/authenticateTokenController')
 */
 
 routes
-    //login & logout
-    .post('/login', LoginLogoutController.login)
-    .put('/logout', LoginLogoutController.logout)
     //users routs
     .get('/users', authenticateToken, UserController.request)
     .post('/users',  authenticateToken, UserController.create)
