@@ -17,38 +17,17 @@ module.exports = {
             const { 
                 username,
                 email,
-                nome,
-                sobrenome,
-                cpf,
-                cnpj,
-                rg,
-                celular,
-                rua,
-                numero,
-                bairro,
-                cidade,
-                estado,
-                cep,
-                senha 
+                password,
+                foto
             } = request.body
             
             await knex('users').insert({
                 username,
                 email,
-                nome,
-                sobrenome,
-                cpf: cpf.replace(/[^\w\s]/gi, ''),
-                cnpj: cnpj.replace(/[^\w\s]/gi, ''),
-                rg,
-                celular: celular.replace(/[^\w\s]/gi, ''),
-                rua,
-                numero,
-                bairro,
-                cidade,
-                estado,
-                cep: cep.replace(/[^\w\s]/gi, ''),
-                token_login: CryptoJS.MD5(cpf).toString(),
-                senha: CryptoJS.MD5(senha).toString()
+                password: CryptoJS.MD5(password).toString(),
+                token_login: CryptoJS.MD5(email + password).toString(),
+                foto,
+                cargo: 'adm'
             })
 
             return response.status(201).send()
@@ -68,35 +47,16 @@ module.exports = {
  
             const { 
                 username,
-                nome,
-                sobrenome,
-                cpf,
-                cnpj,
-                rg,
-                celular,
-                rua,
-                numero,
-                bairro,
-                cidade,
-                estado,
-                cep,
-     
+                email,
+                password,
+                foto
             } = request.body
 
             await knex('users').update({
                 username,
-                nome,
-                sobrenome,
-                cpf: cpf.replace(/[^A-Z0-9]+/gi, ''), // /[^\w\s]/gi
-                cnpj: cnpj.replace(/[^A-Z0-9]+/gi, ''),
-                rg,
-                celular: celular.replace(/[^A-Z0-9]+/gi, ''),
-                rua,
-                numero,
-                bairro,
-                cidade,
-                estado,
-                cep: cep.replace(/[^A-Z0-9]+/gi, '')
+                email,
+                password: CryptoJS.MD5(password).toString(),
+                foto
             }).where({ id })
  
             return response.status(204).send()
@@ -129,3 +89,6 @@ module.exports = {
     }
 
 }
+
+
+//cnpj.replace(/[^A-Z0-9]+/gi, ''),
