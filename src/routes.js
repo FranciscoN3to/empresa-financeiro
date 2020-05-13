@@ -4,8 +4,9 @@ const routes = express.Router()
 const UserController = require('./controllers/UserController')
 const ProdutoServicoController = require('./controllers/ProdutoServicoController')
 
-const authenticateToken = require('./auth/controllers/authenticateTokenController')
+const AuthenticateToken = require('./auth/controllers/AuthenticateTokenController')
 
+const LoginController = require('./auth/controllers/LoginController')
 /** CRUD 
  * Métodos HTTP: GET, POST, PUT, DELETE
  * 
@@ -16,15 +17,16 @@ const authenticateToken = require('./auth/controllers/authenticateTokenControlle
 */
 
 routes
+    .post('/login', LoginController)
     //users routs
-    .get('/users', authenticateToken, UserController.request)
-    .post('/users',  authenticateToken, UserController.create)
-    .put('/users/:id',  authenticateToken, UserController.update)
-    .delete('/users/:id',  authenticateToken, UserController.delete)
+    .get('/users', AuthenticateToken, UserController.request)
+    .post('/users',  AuthenticateToken, UserController.create)
+    .put('/users/:id',  AuthenticateToken, UserController.update)
+    .delete('/users/:id',  AuthenticateToken, UserController.delete)
     //serviços e produtos routs 
-    .get('/produtoServico',  authenticateToken, ProdutoServicoController.request)
-    .post('/produtoServico',  authenticateToken, ProdutoServicoController.create)
-    .put('/produtoServico/:id',  authenticateToken, ProdutoServicoController.update)
-    .delete('/produtoServico/:id',  authenticateToken, ProdutoServicoController.delete)
+    .get('/produtoServico',  AuthenticateToken, ProdutoServicoController.request)
+    .post('/produtoServico',  AuthenticateToken, ProdutoServicoController.create)
+    .put('/produtoServico/:id',  AuthenticateToken, ProdutoServicoController.update)
+    .delete('/produtoServico/:id',  AuthenticateToken, ProdutoServicoController.delete)
 
 module.exports = routes

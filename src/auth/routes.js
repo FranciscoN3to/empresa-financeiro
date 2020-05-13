@@ -1,10 +1,13 @@
 const express = require('express')
-const LoginLogoutController = require('./controllers/LoginLogoutController')
 const routs = express()
+
+const LoginController = require('./controllers/LoginController')
 
 routs
     //login & logout
-    .post('/login', LoginLogoutController.login)
-    .put('/logout', LoginLogoutController.logout)
+    .post('/login', LoginController)
+    .put('/logout', (request, response) => {
+
+    })
 
 module.exports = routs
