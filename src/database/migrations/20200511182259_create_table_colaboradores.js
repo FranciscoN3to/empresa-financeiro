@@ -7,7 +7,7 @@ exports.up = knex => knex.schema.createTable('colaboradores', (table) => {
     table.string('sobrenome')
     table.string('email').notNullable().unique()
     table.string('celular').unique()
-    table.timestamp('data_nascimento').notNullable()
+    table.date('data_nascimento').notNullable()
     table.string('cpf').notNullable().unique()
     table.string('cnpj').unique()
     table.string('rg').unique()
