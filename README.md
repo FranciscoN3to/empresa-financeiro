@@ -110,6 +110,13 @@ Uso da lib [knex.js](http://knexjs.org)
     - filtro_dias (dias referente a coluna "filtro_cliente")
     - created_at
     - updated_at
+- create_table_sessions
+    - id
+    - type (access, refrash) 
+    - token_session
+    - ativo (status do token)
+    - created_at
+    - updated_at
 
 ## SEEDS
 - 001_users
@@ -120,3 +127,24 @@ Uso da lib [knex.js](http://knexjs.org)
 - 006_vendas
 - 007_clientes
 - 008_cron_jobs
+
+
+### Controllers Auth server
+- GenerateAccessToken.js
+    - AccessToken
+    Recebe informações do usuario ("username" e "token_login") para criação do payload do token de autorização JWT.
+
+    - RefrashToken
+    Recebe informações do usuario ("username" e "token_login") para criação do payload do token de refrash para gerar um novo token de autorização quando o anterior for expirado.
+
+- LoginController.js
+Fase de autenticação do usuário. Aqui é criado dois tokens: accessToken (provido da função "AccessToken") e refrashToken (provido da função "RefrashToken). Logo apos a criação dos tokens, os mesmos serão registrados no banco de dados SQL para fins de segurança e identificação do usuario.
+
+- AuthenticateTokenController.js
+Recebe o token enviado pelo client para verificar se o token é válido ou não. 
+
+- TokenRefrash.js
+Atualizar e retornar um novo token de access do usuario
+
+- LogoutController.js
+Desativar o token de refrash do usuário, o front end deverá limpar o token de access.

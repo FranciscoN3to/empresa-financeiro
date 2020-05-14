@@ -7,7 +7,7 @@ module.exports = {
     async request(request, response){ 
         
         const results = await knex('users')
-        console.log('b')
+    
         return response.json(results)
     
     },

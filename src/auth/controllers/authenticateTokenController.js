@@ -10,8 +10,6 @@ module.exports = function (request, response, next){
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (error, user) => {
 
-        console.log({error})
-
         if(error) return response.status(403).send()
 
         request.user = user

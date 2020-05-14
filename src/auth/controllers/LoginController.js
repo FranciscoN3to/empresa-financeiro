@@ -23,6 +23,14 @@ module.exports = async (request, response, next) => {
     const accessToken = GenerateToken.AccessToken(user[0])
     const refrashToken = GenerateToken.RefrashToken(user[0])
 
+    //guardar tokens no banco
+    await knex('sessions')
+        .insert({type:'access', token_session: accessToken})
+
+    await knex('sessions')
+        .insert({type:'refrash', token_session: refrashToken})
+
+
     return response.json({ 
         accessToken,
         refrashToken,
