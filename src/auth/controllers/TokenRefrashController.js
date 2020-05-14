@@ -8,20 +8,29 @@ const GenerateToken = require('./GenerateAccessToken')
 
 module.exports = async (request, response, next) => {
 
-    const RefrashToken = request.body.token
+    try{
 
-    if(RefrashToken == null || typeof RefrashToken === 'undefined') return response.status(401).send() 
-    
-    const token = await knex('sessions').where({type: 'refrash', ativo: true, token_session: RefrashToken})
+        const RefrashToken = request.body.token
 
-    if(token.length === 0) return response.status(403).send()
+        if(RefrashToken == null || typeof RefrashToken === 'undefined') return response.status(401).send() 
+        
+        const token = await knex('sessions').where({type: 'refrash', ativo: true, token_session: RefrashToken})
 
-    const {sub, name} = jwt.decode(token[0].token_session)
+        if(token.length === 0) return response.status(403).send()
 
-    const userSearch = await knex('users').where({username: name, token_login: sub})
+        const {sub, name} = jwt.decode(token[0].token_session)
 
-    if(userSearch.length === 0) return response.status(403).send()
+        const userSearch = await knex('users').where({username: name, token_login: sub})
 
-    return response.json({accessToken: GenerateToken.AccessToken(userSearch[0])})
+        if(userSearch.length === 0) return response.status(403).send()
+
+        return response.json({accessToken: GenerateToken.AccessToken(userSearch[0])})
+
+    }catch(error){
+
+        next(error)
+
+    }
+
     
 }
