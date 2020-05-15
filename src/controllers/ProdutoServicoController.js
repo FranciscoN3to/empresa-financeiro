@@ -7,25 +7,20 @@ module.exports = {
         
         const results = await knex('produtos_servicos')
 
-        return response.json(results)
+        if(results.length === 0) return response.json({  error: 'Sem produtos para mostrar',   dados: [] })
+
+        return response.json({
+            error: false,
+            dados: results
+        })
     
     },
     async create(request, response, next){
 
         try{
-            const { 
-                nome,
-                valor,
-                tipo,
-                quantidade
-            } = request.body
+            const {nome, valor, tipo, quantidade} = request.body
             
-            await knex('produtos_servicos').insert({
-                nome,
-                valor,
-                tipo,
-                quantidade
-            })
+            await knex('produtos_servicos').insert({ nome,  valor, tipo, quantidade })
 
             return response.status(201).send()
 
@@ -42,19 +37,9 @@ module.exports = {
 
             const { id } = request.params
  
-            const { 
-                nome,
-                valor,
-                tipo,
-                quantidade
-            } = request.body
+            const {nome, valor, tipo, quantidade} = request.body
 
-            await knex('produtos_servicos').update({
-                nome,
-                valor,
-                tipo,
-                quantidade
-            }).where({ id })
+            await knex('produtos_servicos').update({ nome, valor, tipo, quantidade }).where({ id })
  
             return response.status(204).send()
 
