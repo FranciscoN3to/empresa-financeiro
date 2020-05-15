@@ -8,7 +8,12 @@ module.exports = {
         
         const results = await knex('users')
     
-        return response.json(results)
+        if(results.length === 0) return response.json({  error: 'Sem usuários para mostrar',   dados: [] })
+
+        return response.json({
+            error: false,
+            dados: results
+        })
     
     },
     async create(request, response, next){
