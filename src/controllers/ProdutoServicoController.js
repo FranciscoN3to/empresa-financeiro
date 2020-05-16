@@ -18,9 +18,9 @@ module.exports = {
     async create(request, response, next){
 
         try{
-            const {nome, valor, tipo, quantidade} = request.body
+            const {nome, tipo, marca, valor, quantidade, descricao} = request.body
             
-            await knex('produtos_servicos').insert({ nome,  valor, tipo, quantidade })
+            await knex('produtos_servicos').insert({ nome, tipo, marca, valor, quantidade, descricao })
 
             return response.status(201).send()
 
@@ -37,9 +37,9 @@ module.exports = {
 
             const { id } = request.params
  
-            const {nome, valor, tipo, quantidade} = request.body
+            const {nome, tipo, marca, valor, quantidade, descricao} = request.body
 
-            await knex('produtos_servicos').update({ nome, valor, tipo, quantidade }).where({ id })
+            await knex('produtos_servicos').update({ nome, tipo, marca, valor, quantidade, descricao }).where({ id })
  
             return response.status(204).send()
 
