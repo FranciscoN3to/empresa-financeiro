@@ -101,13 +101,22 @@ Uso da lib [knex.js](http://knexjs.org)
     - id
     - nome 
     - repetir (true ou false)
-    - repeticoes (numero de repetições caso coluna "repetir": true)
+    - repeticoes (numero de repetições caso coluna "repetir": true, caso seja false, valor sera "1")
     - periodo (periodo em dias para as repetições)
     - horario (horario para a tarefa ser realizada)
     - mensagem
     - via (whatsapp, email)
     - filtro_cliente (ativo, inativo, pagamento_atrasado)
     - filtro_dias (dias referente a coluna "filtro_cliente")
+    - created_at
+    - updated_at
+- create_table_trabalhos_cron_job (Banco dependente do banco "notificacoes_clientes")
+    - id
+    - id_tarefa (id relacionado ao banco notificacoes_clientes)
+    - posicao (sera relacionada a coluna "repeticoes" do tabela "notificacoes_clientes")
+    - enviado (true, false)
+    - hora_tarefa
+    - data_tarefa
     - created_at
     - updated_at
 - create_table_sessions
