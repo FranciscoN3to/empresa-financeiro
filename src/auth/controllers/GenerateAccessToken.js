@@ -7,7 +7,7 @@ module.exports = {
     
         const payLoad = {name: user.username, sub: user.token_login}
 
-        return jwt.sign(payLoad, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '10m'})
+        return jwt.sign(payLoad, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '7h'})
 
     },
     RefrashToken(user){
